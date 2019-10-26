@@ -14,10 +14,11 @@ let parksUS = () => fetch("http://localhost:8088/parks")
         // for (var i = 0; i < parsedParks.length; i++) {
             // parksInfo = parsedParks
             parsedParks.forEach(parks => {
-                if (parks.visited === "visited") {
-                    parkUS = "visited"
+                parksComponent = ""
+                if (parks.visited === true) {
+                    parksComponent = "visited"
                 } else 
-                    parksUS = "notvisited"
+                    parksComponent = "notvisited"
                 //CREATE THE IF/THEN FUNCTION
             const parksContainer = document.querySelector("#article")
             parksContainer.innerHTML += parksFactory(parks) // plus equals to add new ones
@@ -32,7 +33,7 @@ parksUS();
 
 const parksFactory = parks => {
     return `
-    <article class= ${parks.visited}>
+    <article class= ${parksComponent}>
     <h3>${parks.name}</h3>
     <p>${parks.state}</p>
 </article>
