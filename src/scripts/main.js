@@ -14,6 +14,10 @@ let parksUS = () => fetch("http://localhost:8088/parks")
         // for (var i = 0; i < parsedParks.length; i++) {
             // parksInfo = parsedParks
             parsedParks.forEach(parks => {
+                if (parks.visited === "visited") {
+                    parkUS = "visited"
+                } else 
+                    parksUS = "notvisited"
                 //CREATE THE IF/THEN FUNCTION
             const parksContainer = document.querySelector("#article")
             parksContainer.innerHTML += parksFactory(parks) // plus equals to add new ones
@@ -28,7 +32,7 @@ parksUS();
 
 const parksFactory = parks => {
     return `
-    <article>
+    <article class= ${parks.visited}>
     <h3>${parks.name}</h3>
     <p>${parks.state}</p>
 </article>
@@ -39,6 +43,20 @@ const parksFactory = parks => {
 
 
 
-
+// let parksUS = () => fetch("http://localhost:8088/parks")
+//     .then(parks => parks.json())
+//     .then(parsedParks => {
+//         console.table(parsedParks);
+//         // let parksInfo = ""      I TRIED FOR LOOP AND IT DIDN'T WORK SO I TRIED FOR EACH
+//         // for (var i = 0; i < parsedParks.length; i++) {
+//             // parksInfo = parsedParks
+//             parsedParks.forEach(parks => {
+//                 //CREATE THE IF/THEN FUNCTION
+//             const parksContainer = document.querySelector("#article")
+//             parksContainer.innerHTML += parksFactory(parks) // plus equals to add new ones
+            
+//         })
+//     })
+// parksUS();
 
 
